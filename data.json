@@ -1,0 +1,9 @@
+{
+    "target": "targetMail@mail.ru",
+    "mails": [
+        "someMail1@mail.ru"
+    ],
+    "passwords": [
+        "somePass1"
+    ]
+}
