@@ -6,6 +6,6 @@ To use the program, you need to create a "separate password" for mail. This is d
 Enjoyable use!
 ## Installation Guide:
 1) Download Python from official site
-2) Start setup.py to install some libraries
+2) Run `pip install -r requirements.txt` to install required modules
 3) Fill in data.txt and ToSend.txt, you can add as many as you want e-mails
 4) Start main.py
