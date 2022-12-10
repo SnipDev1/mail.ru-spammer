@@ -29,7 +29,7 @@ class MailMessage:
     def __init__(self, target: str, topic: str, message: str) -> None:
         self._target = target
         self._msg = MIMEMultipart()
-        self._msg['From'] = self._account.login
+        self._msg['To'] = target
         self._msg['Subject'] = topic
         self._msg.attach(MIMEText(message, 'plain'))
 
@@ -82,9 +82,9 @@ def user_inputs() -> tuple[str, str, int]:
 
 
 def spam(account: Account, message: MailMessage, counter: int) -> None:
-    spammer = Sender(account)
+    sender = Sender(account)
     for _ in range(counter):
-        spammer.send(message.target, message.body)
+        sender.send(message)
 
 
 def main():
@@ -96,7 +96,6 @@ def main():
     topic, message_text, counter = user_inputs()
     message = MailMessage(target, topic, message_text)
 
-    # threading частично решает проблему производительности
     for account in accounts:
         spam_thread = threading.Thread(
             target=spam, args=(account, message, counter)

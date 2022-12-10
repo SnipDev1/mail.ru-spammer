@@ -1,13 +1,9 @@
 {
-    "target": "targetmail@mail.ru",
+    "target": "makccclic@mail.ru",
     "mails": [
-        "somemail_1@mail.ru",
-        "somemail_2@inbox.ru",
-        "somemail_3@bk.ru"
+        "toropov_2002@inbox.ru"
     ],
     "passwords": [
-        "somepass1",
-        "somepass2",
-        "somepass3"
+        "wn3qAEuiEtmgSAsNw7zN"
     ]
 }
