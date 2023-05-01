@@ -1,12 +1,13 @@
+import json
+import os
+import smtplib as root
+import threading
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+import art
 import colorama
 from colorama import Fore
-import smtplib as root
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-import art
-import os
-import json
-import threading
 
 colorama.init()
 
@@ -71,10 +72,14 @@ def parse_json() -> tuple[str, list[Account]] | None:
     return accounts_json['target'], accounts
 
 
+def sample_graph():
+    art.tprint('Spammer')
+    art.tprint('by DSM, Zink, Knyukua', font="small")
+
+
 def user_inputs() -> tuple[str, str, int]:
     os.system('cls')
-    art.tprint('Spammer')
-    art.tprint('by DSM, Zink', font="small")
+    sample_graph()
     topic = input(Fore.CYAN + '\nTopic: ')
     message = input(Fore.CYAN + '\nMessage: ')
     counter = int(input(Fore.YELLOW + '\nAmount: '))
@@ -84,7 +89,23 @@ def user_inputs() -> tuple[str, str, int]:
 def spam(account: Account, message: MailMessage, counter: int) -> None:
     sender = Sender(account)
     for _ in range(counter):
+        draw_slider(_ + 1, counter)
         sender.send(message)
+    os.system("cls")
+    print(Fore.GREEN)
+    art.tprint("Complete")
+
+
+def draw_slider(current_value, max_value):
+    slider_width = 40
+    slider_filled = int(current_value / max_value * slider_width)
+
+    slider = '[' + ('/' * slider_filled) + (' ' * (slider_width - slider_filled)) + ']'
+    os.system("cls")
+    print(Fore.YELLOW)
+    sample_graph()
+    print(Fore.RED)
+    print(slider + ' {}/{}'.format(current_value, max_value))
 
 
 def main():
